@@ -1,0 +1,290 @@
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/homestyle2.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="images/favicon.png"/>
+    <link rel="manifest" href="manifest.json">
+	<script src="https://ia-database-421ac-default-rtdb.firebaseio.com/"></script>
+</head>
+
+<style>
+    .boxContainer{
+        margin:auto;
+        margin-top:1%;
+        position:relative;
+        width: 300px;
+        height: 100%;
+        border:4px solid #2980b9;
+        padding:0px 10px;
+        border-radius: 50px;
+    }
+    .elementsContainer
+    {
+        width:100%;
+        height:100%;
+        vertical-align: middle;
+    }
+    .search112{
+        border:none;
+        height:100%;
+        width:100%;
+        padding: 0px 5px;
+        font-size: 18px;
+        font-family: "Nunito";
+        color:#424242;
+        border-radius:100%;
+    }
+    
+    .search112:focus{
+        outline:none;
+    }
+    .material-icons{
+        font-size: 26;
+        color:#2980b9;
+    }
+</style>
+
+<body>
+
+<section id="header">
+    <a href="#"><img class="logo" src="image/logo.png"  alt=""></a>
+<div>
+<ul id="navbar">
+    <li><a class="active" href="">Home</a></li>
+    <li><a href="">Item</a></li>
+    <li><a href="">Login</a></li>
+</ul>
+</div>
+</section>
+
+
+
+<section class="home-section">
+    <!---<div class="small-container single-product">
+        <div class="row">
+        <div class="col-2">
+        <img src="${image}" width="100%" id="ProductImg">
+        
+        <div class="small-img-row">
+        <div class="small-img-col">
+        <img src="image/iphone104.webp" width="100%" class="small-img">
+        </div>
+        
+        <div class="small-img-col">
+        <img src="image/iphone101.webp" width="100%"  class="small-img">
+        </div>
+        
+        <div class="small-img-col">
+        <img src="image/iphone101.webp" width="100%" class="small-img">
+        </div>
+        </div>
+        </div> --->
+
+   <div id="root"></div>
+</section>
+
+<section id="product1" class="home-section">
+    <h2>Recommend Item</h2>
+    <p>Summer Collection New Auction Item</p>
+    <div class="pro-container">
+        <div class="pro">
+            <img src="image/iphone104.webp" alt="">
+        <div class="des">
+        <span>adides</span>
+        <h5>Cartoon Astronaut T-Shirts</h5>
+        <div class="star">
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+        </div>
+        <h4>$78</h4>
+        </div>
+        <a herf="#"><i class="fal "></i></a>
+        </div>
+    
+
+        <div class="pro">
+            <img src="../image/iphone104.webp" alt="">
+        <div class="des">
+        <span>adides</span>
+        <h5>Cartoon Astronaut T-Shirts</h5>
+        <div class="star">
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+        </div>
+        <h4>$78</h4>
+        </div>
+        <a herf="#"><i class="fal fa-shopping-cart cart"></i></a>
+        </div>
+    
+ 
+        <div class="pro">
+            <img src="image/iphone104.webp" alt="">
+        <div class="des">
+        <span>adides</span>
+        <h5>Cartoon Astronaut T-Shirts</h5>
+        <div class="star">
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+        </div>
+        <h4>$78</h4>
+        </div>
+        
+        </div>
+    
+
+        <div class="pro">
+            <img src="image/iphone104.webp" alt="">
+        <div class="des">
+        <span>adides</span>
+        <h5>Cartoon Astronaut T-Shirts</h5>
+        <div class="star">
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+            <i class="fas fa-star"> </i>
+        </div>
+        <h4>$78</h4>
+        </div>
+        
+        </div>
+    </div>
+    <div id="retrieve">
+    </div>
+</section>
+
+    <script src="css/index.js"></script>
+    
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+         var id = new URL(location.href).searchParams.get('id');
+         console.log(id);
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCKmS29HvakcC1Ahcgm64r0cTD4gkO_Ip4",
+          authDomain: "ia-database-421ac.firebaseapp.com",
+          databaseURL: "https://ia-database-421ac-default-rtdb.firebaseio.com",
+          projectId: "ia-database-421ac",
+          storageBucket: "ia-database-421ac.appspot.com",
+          messagingSenderId: "859125618347",
+          appId: "1:859125618347:web:8fe586368b8ff64590c9ee",
+          measurementId: "G-J0YDEC1LH7"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getDatabase(app);
+
+        import { getDatabase, ref, onValue} from "https://www.gstatic.com/firebasejs/9.9.2/firebase-database.js";
+        const db = getDatabase();
+        
+      
+
+        const starCountRef = ref(db,`/item/${id}`);
+        onValue(starCountRef, (snapshot) => {
+            console.log(snapshot.val())
+            let item_name = snapshot.val().item_name;
+            let price = snapshot.val().price;
+            let image = snapshot.val().image;
+            let description= snapshot.val().description;
+            let image2 = snapshot.val().image2;
+            show(item_name, price, image, description, image2);
+            switchs()
+        }
+        );
+
+        function show(name, price, image, description, image2){
+            document.getElementById('root').innerHTML += 
+         `<div class="small-container single-product">
+            <div class="row">
+            <div class="col-2">
+            <img src="${image}" width="100%" id="ProductImg" >
+            
+            <div class="small-img-row">
+            <div class="small-img-col">
+            <img src="image/iphone100.jpg" width="100%" class="small-img" >
+            </div>
+            
+            <div class="small-img-col">
+            <img src="${image}" width="100%"  class="small-img" >
+            </div>
+            
+            <div class="small-img-col">
+            <img src="${image}" width="100%" class="small-img">
+            </div>
+            </div>
+            </div>
+            <input type="hidden" id="id">
+            <div class="col-2">
+            <p class="font-color">phone</p>
+            <h1>${name}</h1>
+            <h4><p>$${price}</p></h4>
+            <a href="" class="btn2"> Bid</a>
+            <h3>Product Details</h3>
+            <p>
+            ${description}
+            </p>
+            </div>
+            </div>
+            </div>
+            `
+            
+        }
+        function switchs(){
+
+        var ProductImg = document.getElementById("ProductImg");
+        var SmaillImg = document.getElementsByClassName("small-img");
+
+        SmaillImg[0].onclick = function()
+        {
+            ProductImg.src=SmaillImg[0].src;
+        }
+        SmaillImg[1].onclick = function()
+        {
+            ProductImg.src=SmaillImg[1].src;
+        }
+        SmaillImg[2].onclick = function()
+        {
+            ProductImg.src=SmaillImg[2].src;
+        }
+    }
+        window.switchs =switchs;
+        
+    //document.getElementById('root').innerHTML +=  {
+    //    return `
+    //    ${image}
+
+    //     `
+    // }).join('');   
+    // })
+    // .catch((rej) => {
+    //     console.log('error', rej);
+    //     })
+
+
+        </script>      
+</body>
+</html>

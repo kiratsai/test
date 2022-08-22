@@ -1,0 +1,51 @@
+<html >
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IA</title>
+		    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+	</head>
+    <body>
+      <div id="root"></div>
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyCKmS29HvakcC1Ahcgm64r0cTD4gkO_Ip4",
+                authDomain: "ia-database-421ac.firebaseapp.com",
+                databaseURL: "https://ia-database-421ac-default-rtdb.firebaseio.com",
+                projectId: "ia-database-421ac",
+                storageBucket: "ia-database-421ac.appspot.com",
+                messagingSenderId: "859125618347",
+                appId: "1:859125618347:web:8fe586368b8ff64590c9ee",
+                measurementId: "G-J0YDEC1LH7"
+              };
+
+              let userArray = [];
+
+                firebase.initializeApp(firebaseConfig);
+                var firebaseRef=firebase.database().ref("item");
+                firebaseRef.once("value", function(snapshot){
+                  var data = snapshot.val();
+                  for(let key in data){
+                    data[key].adKey = key;
+                    userArray.push(data[key]);
+                }
+                
+                localStorage.setItem('adArray', JSON.stringify(userArray));
+                console.log('array', userArray)
+
+                document.getElementById('root').innerHTML += userArray.map((item) => {
+                return `
+                <div class="card card_style" id="${item.adKey}"  style="width: 18rem;">
+                <img class="card-img-top card_img" src="${item.image}" alt="image" style="background-color:white;">
+                </div>
+                `
+              }).join('');
+            })
+            .catch((rej) => {
+              console.log('error', rej);
+            })
+           
+            </script>
+    </body>
+</html>

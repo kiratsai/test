@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>item</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/homestyle2.css">
+    <link rel="manifest" href="/Manifest.json">
+    <!-- Boxicons CDN Link -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="icon" href="image/favicon.png"/>
+    <link rel="manifest" href="manifest.json">
+	<script src="https://ia-database-421ac-default-rtdb.firebaseio.com/"></script>
+    <style>
+        .boxContainer{
+            margin:auto;
+            margin-top:1%;
+            position:relative;
+            width: 300px;
+            height: 100%;
+            border:4px solid #2980b9;
+            padding:0px 10px;
+            border-radius: 50px;
+        }
+        .elementsContainer
+        {
+            width:100%;
+            height:100%;
+            vertical-align: middle;
+        }
+        .search112{
+            border:none;
+            height:100%;
+            width:100%;
+            padding: 0px 5px;
+            font-size: 18px;
+            font-family: "Nunito";
+            color:#424242;
+            border-radius:100%;
+        }
+        
+        .search112:focus{
+            outline:none;
+        }
+        .material-icons{
+            font-size: 26;
+            color:#2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <section id="header">
+        <a href="#"><img class="logo" src="image/logo.png"  alt=""></a>
+    <div>
+    <ul id="navbar">
+        <li><a class="active" href="">Home</a></li>
+        <li><a href="">Item</a></li>
+        <li><a href="">Login</a></li>
+    </ul>
+    </div>
+    </section>
+    
+    <div class="boxContainer">
+        <table class="elementsContainer">
+            <tr>
+                <td>
+                    <input type="text" class="search112 rd" placeholder="search">
+                </td>
+                <td>
+                    <a href="#"><i class="material-icons">search</i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+   <div id="root"></div>
+
+    
+    </section>
+    <script src="css/index.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyCKmS29HvakcC1Ahcgm64r0cTD4gkO_Ip4",
+            authDomain: "ia-database-421ac.firebaseapp.com",
+            databaseURL: "https://ia-database-421ac-default-rtdb.firebaseio.com",
+            projectId: "ia-database-421ac",
+            storageBucket: "ia-database-421ac.appspot.com",
+            messagingSenderId: "859125618347",
+            appId: "1:859125618347:web:8fe586368b8ff64590c9ee",
+            measurementId: "G-J0YDEC1LH7"
+          };
+        firebase.initializeApp(firebaseConfig);
+
+        
+          let userArray = [];            
+            var firebaseRef=firebase.database().ref("item");
+            firebaseRef.once("value", function(snapshot){
+              var data = snapshot.val();
+              for(let key in data){
+                data[key].adKey = key;
+                userArray.push(data[key]);
+            }
+            
+            localStorage.setItem('adArray', JSON.stringify(userArray));
+            console.log('array', userArray)
+
+            document.getElementById('root').innerHTML += userArray.map((item) => {
+            return `
+            <div class="content-product">
+                <img class="img-product" id="" src="${item.image}">
+                <h3 class="size-style" >${item.item_name}</h3>
+                <p class="p-product"></p>
+                <h6 class="size-h6">$${item.price}</h6>
+                
+                <a href="product-view.html?id=${item.adKey}"><button class="buy button-product">view</button></a>
+                
+            </div>
+                `
+        }).join('');
+    })
+    .catch((rej) => {
+      console.log('error', rej);
+    })
+
+ //   let button=document.getElementById("getid")[0]
+ //   button.onclick=function(){
+ //       window.open(encodeURI('product-view.html?'+'key='+'getid'))
+ //   }
+   
+    </script>
+
+</body>
+</html>

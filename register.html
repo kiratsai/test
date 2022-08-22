@@ -1,0 +1,100 @@
+<html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>IA</title>
+		<link rel="stylesheet" href="css/login.css">
+		<link rel="icon" href="images/favicon.png"/>
+		<link rel="manifest" href="manifest.json">
+	<script src="https://ia-database-421ac-default-rtdb.firebaseio.com/"></script> 
+	</head>
+	
+  	<body>
+    	<div class="center">
+            <a><img src="image/ASKitPhoto.png" alt="logoImage" width="140" height="180"></a>
+            
+		  	<form method="post">
+				<!---<div class="txt_field">
+					<input type="text" id="username" required>
+					<span></span>
+					<label>User Name</label>
+				</div> ---->
+
+                <div class="txt_field">
+					<input type="email" id="email" required>
+					<span></span>
+					<label>Email</label>
+				</div>
+
+                <div class="txt_field">
+					<input type="password" id="password" required>
+					<span></span>
+					<label>Password</label>
+				</div>
+
+                <!---<div class="txt_field">
+					<input type="password" required>
+					<span></span>
+					<label>Confirm Password</label>
+				</div> ---->
+
+				<i><div class="pass">Forgot Password?</div><i>
+
+				<input type="submit" value="register" id="register">
+		  	</form>
+    	</div>
+		<script src="css/index.js"></script>
+
+	
+
+<script type="module">
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js";
+
+	
+	const firebaseConfig = {
+		apiKey: "AIzaSyCKmS29HvakcC1Ahcgm64r0cTD4gkO_Ip4",
+		authDomain: "ia-database-421ac.firebaseapp.com",
+		databaseURL: "https://ia-database-421ac-default-rtdb.firebaseio.com",
+		projectId: "ia-database-421ac",
+		storageBucket: "ia-database-421ac.appspot.com",
+		messagingSenderId: "859125618347",
+		appId: "1:859125618347:web:8fe586368b8ff64590c9ee",
+		measurementId: "G-J0YDEC1LH7"
+	  };
+	
+	  // Initialize Firebase
+	  const app = initializeApp(firebaseConfig);
+	  const auth = getAuth();
+	
+	document.getElementById("register").onclick = function() {signup()};
+
+	function signup(){
+
+		var email = document.getElementById('email').value;
+		var password = document.getElementById('password').value;
+		var username = document.getElementById('username').value;
+	
+	
+	createUserWithEmailAndPassword(auth, email, password)
+		.then((userCredential) => {
+		const user = userCredential.user;
+		alert('user crate');
+	   
+	})
+	.catch((error) => {
+		const errorCode = error.code;
+		const errorMessage = error.message;
+		
+		alert(errorMessage);
+	
+	});
+	}
+
+	</script>
+  	</body>
+
+	
+
+</html>

@@ -1,0 +1,14 @@
+{
+    "name": "IA",
+    "short_name": "IA",
+    "start_url": ".",
+    "background_color": "#6dcdb1",
+    "theme_color":"#009578",
+    "display": "standalone",
+        "icons": [{
+            "src": "image/facebook_profile_image.png",
+            "sizes": "1200x1200",
+            "type": "image/png"
+          }]
+    
+}
